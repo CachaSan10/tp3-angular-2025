@@ -1,0 +1,12 @@
+.carousel{
+    margin-bottom: 20px;
+    background-color: aqua;
+}
+
+.carousel-item {
+    height: 500px;
+}
+
+.carousel-item img{
+    height: 500px;
+}   
