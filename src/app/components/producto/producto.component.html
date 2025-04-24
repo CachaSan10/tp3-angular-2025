@@ -14,11 +14,31 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          <ul>
+            <li *ngFor="let producto of productosComprado">
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img [src]="producto.imagen" alt="{{producto.imagen_descripcion}}" class="img-fluid rounded-start">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body text-bg-info">
+                        <h5 class="card-title">{{producto.nombre}}</h5>
+                      <p class="card-text">Precio Unitario: ${{producto.precio}}</p>  
+                      <p class="card-text">Cantidad: {{producto.cantidad}}</p>
+                      <p class="card-text">Total: ${{mostrarTotalProducto(producto)}}</p>
+                      <button class="btn btn-danger" (click)="restarCantidadProducto(producto)">-</button>
+                      <button class="btn btn-success" (click)="sumarCantidadProducto(producto)">+</button>  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -32,7 +52,7 @@
                     <h5 class="card-title">{{producto.nombre}}</h5>
                     <p class="card-text">{{producto.descripcion}}</p>
                     <p class="card-text">Precio: {{producto.precio}}</p>
-                    <button class="btn btn-primary">Agregar al carrito</button>
+                    <button class="btn btn-primary" (click)="agregarProducto(producto)">Agregar al carrito</button>
                 </div>
             </div>
         </div>
