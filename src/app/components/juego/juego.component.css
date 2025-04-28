@@ -1,0 +1,35 @@
+.palabra-secreta {
+    margin-top: 30px;
+}
+
+.abecedario {
+    margin: 10px;
+    width: 60px;
+    border-radius: 10px;
+    background-color: #eec12e;
+    border: 3px solid #3516be;
+}
+
+.abecedario:hover {
+    background-color: rgb(250, 96, 255);
+}
+
+.letra-opcion {
+    display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.letra-opcion, .letra-palabra {
+    font-size: 30px;
+    font-weight: bold;    
+}
+
+.letra-palabra{
+    width: 60px;
+    border-radius: 10px;
+    background-color: #cafa1d;
+}
+
+
+

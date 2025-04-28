@@ -1,6 +1,16 @@
+h5 {
+    color: rgb(158, 230, 25);
+    font-size: 25px;
+    font-weight: 900;
+}
+
+p{
+    color: rgb(158, 230, 25);
+    font-weight: 600;
+}
+
 .carousel{
     margin-bottom: 20px;
-    background-color: aqua;
 }
 
 .carousel-item {
