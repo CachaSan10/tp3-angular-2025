@@ -1,19 +1,54 @@
 <div class="container">
-    <div class="row   justify-content-center ">
+
+    <div [hidden]="juegoIniciado" class="row   justify-content-center ">
         <div  class=" text-center ">
             <button class="btn btn-dark  " (click)="empezarJuego()">Empezar Juego</button>
         </div>
     </div>
-    <div class="row justify-content-center text-center">
+
+    <div  class="row justify-content-center text-center">
         <div *ngFor="let ls of palabraSecreta; let i = index" class="  col-1 palabra-secreta ">
             <div class="letra-palabra ">
                 {{letraAcertada[i] ? ls : '_'}}
             </div>
         </div>
     </div>
-    <div class="row   justify-content-center ">
-        <div *ngFor="let letra of abcedario" class="abecedario row text-center ">
-            <button id="{{letra}}" class="btn letra-opcion  " (click)="agregarLetra(letra)"  [disabled]="letraIngresada.includes(letra)">{{letra}}</button>
+    
+    <div [hidden]="botonReiniciar" class="row   justify-content-center boton-reinicio">
+        <div  class=" text-center  ">
+            <button class="btn btn-success  " (click)="empezarJuego()">Reiniciar Juego</button>
         </div>
     </div>
+
+    <div [hidden]="mostrarContadorIntentos" class="row text-center justify-content-center">
+            <h1>Cantidad de intentos</h1>
+            <div class="container-intentos">{{cantidadIntentos}}</div>
+    </div>
+
+    <div [hidden]="ocultarAbecedario" class="row   justify-content-center ">
+        <div *ngFor="let letra of abcedario" class=" text-center col-1">
+            <button id="{{letra}}" class="  abecedario  " (click)="agregarLetra(letra)"  [disabled]="letraIngresada.includes(letra)">{{letra}}</button>
+        </div>
+    </div>
+
+    <div class="modal fade show" *ngIf="juegoIniciado" tabindex="-1" aria-labelledby="modalPerdidaLabel" aria-modal="true" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalPerdidaLabel">¡Perdiste!</h5>
+              <button type="button" class="btn-close" (click)="cerrarModalPerdida()" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+              ¡Se te acabaron los intentos! La palabra era: {{ palabraSecreta.join('') }}.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="cerrarModalPerdida()">Cerrar</button>
+              </div>
+          </div>
+        </div>
+      </div>
+      
+      <div *ngIf="juegoIniciado" class="modal-backdrop fade show"></div>
+
+   
 </div>

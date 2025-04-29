@@ -2,25 +2,37 @@
     margin-top: 30px;
 }
 
+.boton-reinicio {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .abecedario {
     margin: 10px;
     width: 60px;
     border-radius: 10px;
     background-color: #eec12e;
     border: 3px solid #3516be;
+    display: flex; 
+  justify-content: center; 
+  align-items: center;
+    
 }
 
 .abecedario:hover {
     background-color: rgb(250, 96, 255);
+    cursor:progress;
 }
 
-.letra-opcion {
-    display: flex; 
-  justify-content: center; 
-  align-items: center;
+.abecedario:disabled{
+    background-color: #fa0909; /* Un color de fondo más claro */
+  color: #fff9f9; /* Un color de texto más grisáceo */
+  border: 1px solid #25c72d;
+  cursor: not-allowed;
 }
 
-.letra-opcion, .letra-palabra {
+
+.abecedario, .letra-palabra {
     font-size: 30px;
     font-weight: bold;    
 }
@@ -31,5 +43,14 @@
     background-color: #cafa1d;
 }
 
+.container-intentos{
+    font-size: 50px;
+    font-weight: bolder;
+    background-color: #2811fa;
+    color: rgb(0, 255, 234);
+    border-radius: 50%;
+    border: 5px solid rgb(87, 3, 3);
+    width: 6rem;
+}
 
 

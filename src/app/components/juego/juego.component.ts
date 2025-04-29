@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-juego',
   imports: [CommonModule],
   templateUrl: './juego.component.html',
   styleUrl: './juego.component.css'
 })
-export class JuegoComponent {
+export class JuegoComponent{
 
   abcedario: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
@@ -17,10 +18,20 @@ export class JuegoComponent {
   letraIngresada: string[] = []; 
 
   letraAcertada: boolean[] = [];
+
+  letraCorrecta: string[] = []
   
   cantidadIntentos: number = 10;
 
   juegoIniciado: boolean = false;
+
+  juegoFinalizado: boolean = false;
+
+  botonReiniciar: boolean = true;
+
+  mostrarContadorIntentos: boolean = true;
+
+  ocultarAbecedario: boolean = true;
 
   palabraAdivinada: boolean = false;
 
@@ -31,6 +42,9 @@ export class JuegoComponent {
   // Inicia el Juego
 empezarJuego() {
   this.juegoIniciado=true;
+  this.ocultarAbecedario=false;
+  this.botonReiniciar=false;
+ this.mostrarContadorIntentos=false;
   let indiceAleatorio = Math.floor(Math.random() * (5 - 0) + 0);
   const palabra = this.palabras[indiceAleatorio]; 
   console.log(indiceAleatorio);
@@ -58,10 +72,24 @@ iniciarPalabrasAcertadas(){
     for (let i = 0; i < this.palabraSecreta.length; i++ ){
       if(this.palabraSecreta[i] === letraSeleccionada){
         this.letraAcertada[i] = true;
+        this.letraCorrecta[i] = letraSeleccionada;
         acierto = true;
       }
     }
 
+    if (!acierto){
+      this.cantidadIntentos--;
+      if (this.cantidadIntentos===0){
+        this.juegoFinalizado=true;
+      }
+    }
+
+
+
+  }
+
+  cerrarModalPerdida(): void {
+    this.juegoIniciado = false;
   }
 
 
