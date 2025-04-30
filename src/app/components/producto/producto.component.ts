@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductoComponent {
   path = 'images/';
-
+  id:number = 4;
   productos: Producto[] = [
    new Producto(1,  'Notebook Samsung Galaxy Book3', 'La Notebook Samsung Galaxy Book3 de 15.6" en color plateado ofrece un rendimiento potente gracias a su procesador Intel Core i7, 16GB de RAM y un rápido almacenamiento SSD de 512GB. Ideal para productividad y tareas exigentes en un diseño elegante y portátil.', 100, 1, this.path + 'netbook-samsung.webp', 'Notebook Samsung Galaxy Book3'),
    new Producto(2,  'Parlante Philips TAX3705/77N', 'El parlante Philips TAX3705/77N es un altavoz portátil para fiestas que destaca por su sonido potente con graves definidos, luces de fiesta dinámicas, resistencia a salpicaduras, micrófono para karaoke, y batería de larga duración para disfrutar de la música en cualquier lugar. Ideal para animar reuniones y eventos.', 200, 1, this.path + 'parlante-philips.webp', 'Parlante Philips TAX3705/77N'),
@@ -20,11 +20,28 @@ export class ProductoComponent {
   productosComprado: Producto[] = [];
 
   agregarProducto(producto: Producto) { 
-    this.productosComprado.push(producto);
+
+    if(this.esProductoRepetido(producto)){
+      this.id+=1;    
+       this.productosComprado.push(new Producto(this.id,producto.nombre,producto.descripcion,producto.precio,1,producto.imagen,producto.imagen_descripcion));
+    }else{
+      
+      this.productosComprado.push(producto)
+    }
+  }
+
+  esProductoRepetido(producto: Producto){
+    let band=false;
+    this.productosComprado.forEach(p => {
+      if (p.id === producto.id) {
+         band = true;
+      }
+    });
+    return band;
   }
 
   eliminarProducto(producto: Producto) {
-    this.productosComprado = this.productosComprado.filter(p => p !== producto);
+    this.productosComprado = this.productosComprado.filter(p => p.id !== producto.id);
   }
 
   sumarCantidadProducto(producto: Producto) {
