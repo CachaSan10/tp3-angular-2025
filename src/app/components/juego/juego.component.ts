@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-juego',
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './juego.component.html',
   styleUrl: './juego.component.css'
 })
 export class JuegoComponent{
 
-  abcedario: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  abcedario: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N','Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-  palabras: string[] = ['PLANETA','ISLA','COMPUTADORA','TECLADO','PROGRAMACION'];
+  palabras: string[] = ['PLA NETA','IS LA','COMPU TADORA','TEC LADO','PROGRAM ACION'];
+
+  palabrasEquiposFutbol: String[] = ['BOCA','SAN LORENZO','RIVER PLATE','RIESTRA','RACING','INDEPENDIENTE','ESTUDIANTES','UNION', 'PLATENSE','BANFIELD']
+
+  palabrasPaises: string[] = ['ARGENTINA','BOLIVIA','COLOMBIA','ALEMANIA','ESPAÑA','PORTUGAL','BRASIL','JAPON','CHINA','KOREA DEL SUR'] 
 
   palabraSecreta: string[] = []
 
@@ -19,7 +24,9 @@ export class JuegoComponent{
 
   letraAcertada: boolean[] = [];
 
-  letraCorrecta: string[] = []
+  letraCorrecta: string[] = [];
+
+  categoriaSeleccionada:string = "";
   
   cantidadIntentos: number = 10;
 
@@ -44,7 +51,7 @@ empezarJuego() {
   this.juegoIniciado=true;
   this.ocultarAbecedario=false;
   this.botonReiniciar=false;
- this.mostrarContadorIntentos=false;
+  this.mostrarContadorIntentos=false;
   let indiceAleatorio = Math.floor(Math.random() * (5 - 0) + 0);
   const palabra = this.palabras[indiceAleatorio]; 
   console.log(indiceAleatorio);
