@@ -41,7 +41,10 @@ export class ProductoComponent {
   }
 
   eliminarProducto(producto: Producto) {
-    this.productosComprado = this.productosComprado.filter(p => p.id !== producto.id);
+    var index:number;
+    index = this.productosComprado.findIndex(prod => prod.id == producto.id);
+   delete this.productosComprado[producto.id]
+    // this.productosComprado = this.productosComprado.filter(p => p.id !== producto.id);
   }
 
   sumarCantidadProducto(producto: Producto) {
