@@ -9,6 +9,6 @@ export const routes: Routes = [
   {path: 'producto', component: ProductoComponent},
   {path: 'juego', component: JuegoComponent},
   {path: 'parte2', component: Parte2Component},
-  {path: 'formulario-parte2', component: FormularioParte2Component},
+  { path: 'formulario-boleto/:id', component: FormularioParte2Component},
   {path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];
