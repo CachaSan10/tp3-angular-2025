@@ -1,5 +1,9 @@
 <div class="container">
 
+  <div [hidden]="mostrarTituloCategoria" class="text-center">
+    <h1>{{categoria}}</h1>
+  </div>
+
     <div [hidden]="juegoIniciado" class="row   justify-content-center ">
         <div  class=" text-center ">
             <button class="btn btn-dark  " (click)="empezarJuego()">Empezar Juego</button>
@@ -52,29 +56,28 @@
       <div *ngIf="juegoIniciado" class="modal-backdrop fade show"></div>
     -->
 
-    <div class="modal fade show" *ngIf="juegoIniciado" tabindex="-1" aria-labelledby="modalPerdidaLabel" aria-modal="true" role="dialog" style="display: block;">
+    <div class="modal fade show" *ngIf="mostrarModal" tabindex="-1" aria-labelledby="modalCategoriaLabel" aria-modal="true" role="dialog" style="display: block;">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="modalPerdidaLabel">SELECCIONE CATEGORIA</h5>
-              <button type="button" class="btn-close" (click)="cerrarModalPerdida()" aria-label="Cerrar"></button>
+              <h5 class="modal-title" id="modalCategoriaLabel">SELECCIONE CATEGORIA</h5>
             </div>
             <div class="modal-body">
                 <select [(ngModel)]="categoriaSeleccionada" >
                     <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="Equipos Argentino">Equipos de Futbol Argentino</option>
-                    <option value="Paises">Paises</option>
+                    <option value="1">Equipos de Futbol Argentino</option>
+                    <option value="2">Paises</option>
                   </select>
                   
                   <p>Valor seleccionado actualmente: {{ categoriaSeleccionada }}</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" (click)="cerrarModalPerdida()">Cerrar</button>
+              <button type="button" class="btn btn-secondary" (click)="cerrarModalCategoria()">Cerrar</button>
               </div>
           </div>
         </div>
       </div>
       
-      <div *ngIf="juegoIniciado" class="modal-backdrop fade show"></div>
+      <div *ngIf="mostrarModal" class="modal-backdrop fade show"></div>
    
 </div>
