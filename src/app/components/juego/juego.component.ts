@@ -30,9 +30,15 @@ export class JuegoComponent {
 
   mostrarTituloCategoria: boolean = true;
 
-  mostrarModal:boolean = false;
+  mostrarImagen: boolean = true;
+
+  mostrarModal: boolean = false;
 
   cantidadIntentos: number = 6;
+
+  cantidadErrores: number = 0;
+
+  imagenAhorcado: string = "";
 
   juegoIniciado: boolean = false;
 
@@ -54,13 +60,13 @@ export class JuegoComponent {
   empezarJuego() {
     this.juegoIniciado = true;
     this.mostrarModal = true;
-    
+
   }
 
   // palabra seleccionada al azar
   seleccionarPalabraAleatoria() {
     var indiceAleatorio = Math.floor(Math.random() * (10 - 0) + 0);
-    var palabra:string;
+    var palabra: string;
     switch (this.categoriaSeleccionada) {
       case "1":
         palabra = this.palabrasEquiposFutbol[indiceAleatorio];
@@ -104,6 +110,8 @@ export class JuegoComponent {
 
     if (!acierto) {
       this.cantidadIntentos--;
+      this.cantidadErrores++;
+      this.imagenAhorcado = 'images/ahorcado/ahorcado-' + String(this.cantidadErrores) + '.jpg';
       if (this.cantidadIntentos === 0) {
         this.juegoFinalizado = true;
       }
@@ -117,12 +125,14 @@ export class JuegoComponent {
     this.juegoIniciado = false;
   }
 
-  cerrarModalCategoria(){
+  cerrarModalCategoria() {
     this.ocultarAbecedario = false;
     this.botonReiniciar = false;
     this.mostrarContadorIntentos = false;
-    this.mostrarModal=false;
-    this.mostrarTituloCategoria=false;
+    this.mostrarModal = false;
+    this.mostrarTituloCategoria = false;
+    this.mostrarImagen = false;
+    this.imagenAhorcado = 'images/ahorcado/ahorcado-' + String(this.cantidadErrores) + '.jpg';
     this.seleccionarPalabraAleatoria();
   }
 

@@ -1,5 +1,11 @@
 <div class="container">
 
+<div class="row">
+  <div [hidden]="mostrarImagen" class="col d-flex justify-content-center align-items-center">
+        <img [src]="imagenAhorcado" alt="Imagen del ahorcado" class="img-fluid">
+  </div>
+
+  <div class="col">
   <div [hidden]="mostrarTituloCategoria" class="text-center">
     <h1>{{categoria}}</h1>
   </div>
@@ -28,6 +34,10 @@
             <h1>Cantidad de intentos</h1>
             <div class="container-intentos">{{cantidadIntentos}}</div>
     </div>
+  </div>
+</div>
+
+
 
     <div [hidden]="ocultarAbecedario" class="row   justify-content-center ">
         <div *ngFor="let letra of abcedario" class=" text-center col-1">
