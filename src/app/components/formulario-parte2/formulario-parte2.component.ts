@@ -16,7 +16,7 @@ export class FormularioParte2Component implements OnInit {
   accion: String="new";
   estado: boolean=false;
   constructor(private boletoService:BoletoService, private router:Router,private activatedRoute: ActivatedRoute) {
-    this.boleto=new Boleto(0,'',3000,0,'',new Date(),''); 
+    this.boleto=new Boleto(0,'',0,0,'',new Date(),''); 
   }
 
   ngOnInit(): void {

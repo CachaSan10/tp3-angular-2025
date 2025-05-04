@@ -12,9 +12,9 @@ export class JuegoComponent {
 
   abcedario: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-  palabrasEquiposFutbol: string[] = ['BOCA', 'SAN LORENZO', 'RIVER PLATE', 'RIESTRA', 'RACING', 'INDEPENDIENTE', 'ESTUDIANTES', 'UNION', 'PLATENSE', 'BANFIELD']
+  palabrasEquiposFutbol: string[] = ['BOCA', 'FERRO', 'RIVER', 'RIESTRA', 'RACING', 'INDEPENDIENTE', 'ESTUDIANTES', 'UNION', 'PLATENSE', 'BANFIELD']
 
-  palabrasPaises: string[] = ['ARGENTINA', 'BOLIVIA', 'COLOMBIA', 'ALEMANIA', 'ESPAÑA', 'PORTUGAL', 'BRASIL', 'JAPON', 'CHINA', 'KOREA DEL SUR']
+  palabrasPaises: string[] = ['ARGENTINA', 'BOLIVIA', 'COLOMBIA', 'ALEMANIA', 'ESPAÑA', 'PORTUGAL', 'BRASIL', 'JAPON', 'CHINA', 'FRANCIA']
 
   palabraSecreta: string[] = []
 
@@ -34,6 +34,10 @@ export class JuegoComponent {
 
   mostrarModal: boolean = false;
 
+  modalGanador : boolean = false;
+
+  modalPerdedor : boolean = false;
+
   cantidadIntentos: number = 6;
 
   cantidadErrores: number = 0;
@@ -52,9 +56,6 @@ export class JuegoComponent {
 
   palabraAdivinada: boolean = false;
 
-  palabraIncorrecta: boolean = false;
-
-  palabraCorrecta: boolean = false;
 
   // Inicia el Juego
   empezarJuego() {
@@ -99,11 +100,11 @@ export class JuegoComponent {
   agregarLetra(letraSeleccionada: string) {
     this.letraIngresada.push(letraSeleccionada);
     let acierto = false;
-
     for (let i = 0; i < this.palabraSecreta.length; i++) {
       if (this.palabraSecreta[i] === letraSeleccionada) {
         this.letraAcertada[i] = true;
         this.letraCorrecta[i] = letraSeleccionada;
+        console.log(this.letraCorrecta);
         acierto = true;
       }
     }
@@ -112,17 +113,62 @@ export class JuegoComponent {
       this.cantidadIntentos--;
       this.cantidadErrores++;
       this.imagenAhorcado = 'images/ahorcado/ahorcado-' + String(this.cantidadErrores) + '.jpg';
-      if (this.cantidadIntentos === 0) {
+      if (this.cantidadIntentos === 0 ) {
+          this.mostrarModalPerdedor();
+          this.juegoFinalizado = true;
+      }
+    }else{
+      if(this.cantidadErrores<6 && this.letraCorrecta.join('') === this.palabraSecreta.join('')){
+        this.palabraAdivinada=true;
+        this.mostrarModalGanador();
         this.juegoFinalizado = true;
+
+          console.log("Felicidades ganaste")
       }
     }
 
-
-
   }
 
-  cerrarModalPerdida(): void {
+  cerrarModalPerdedor(): void {
+    this.reiniciarPartida();
     this.juegoIniciado = false;
+    this.modalPerdedor = false;
+  }
+
+  mostrarModalGanador(): void{
+    this.modalGanador = true;
+  }
+
+  mostrarModalPerdedor():void{
+    this.modalPerdedor=true;
+  }
+
+ reiniciarPartida():void{
+  this.ocultarAbecedario = true;
+  this.botonReiniciar = true;
+  this.mostrarContadorIntentos = true;
+  this.mostrarModal = true;
+  this.mostrarTituloCategoria = true;
+  this.mostrarImagen = true;
+  this.palabraSecreta=[];
+  this.letraCorrecta=[];
+  this.letraAcertada=[];
+  this.letraIngresada=[];
+  this.mostrarModal=false;
+  this.cantidadIntentos=6;
+  this.cantidadErrores=0;
+ }
+
+ reiniciarJuego(){
+  this.reiniciarPartida();
+  this.mostrarModal=true;
+  this.juegoIniciado=true;
+ }
+
+  cerrarModalGanador():void{
+   this.reiniciarPartida();
+   this.juegoIniciado = false;
+    this.modalGanador = false;
   }
 
   cerrarModalCategoria() {
@@ -137,20 +183,12 @@ export class JuegoComponent {
   }
 
 
-
-  /*
-  verificarLetra() {
-    if (this.palabraSecreta.includes(this.letraIngresada)) {
-      this.palabraCorrecta = true;
-    } else {
-      this.palabraIncorrecta = true;
-    }
-  } 
-
+ 
+/** 
   verificarPalabra() {
     if (this.palabraIngresada.join('') === this.palabraSecreta.join('')) {
       this.palabraAdivinada = true;
     }
   } 
-    */
+*/
 }

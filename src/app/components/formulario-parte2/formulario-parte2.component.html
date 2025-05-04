@@ -13,7 +13,8 @@
     <div class="mb-3">
       <label for="categoriaTurista" class="form-label">Seleccione Categoria Turista</label>
     <select (click)="mostrarPrecioCobrado()" name="categoriaTurista" class="form-select form-select-lg mb-3" aria-label="Default select example" [(ngModel)]="boleto.categoriaTurista"  required>
-      <option value="Menor" selected>Menor</option>
+      <option value="" disabled selected>Seleccione categoria de Turista</option>
+      <option value="Menor">Menor</option>
       <option value="Adulto"  >Adulto</option>
       <option value="Jubilado"  >Jubilado</option>
     </select>
