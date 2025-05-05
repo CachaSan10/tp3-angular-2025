@@ -77,4 +77,10 @@ export class Parte2Component implements OnInit {
     return Total;
   }
 
+  obtenerTotalGeneral(){
+    let total:number;
+    total = this.sumarBoletoMenor() + this.sumarBoletoAdulto() + this.sumarBoletoJubilado();
+    return total;
+  }
+
 }
