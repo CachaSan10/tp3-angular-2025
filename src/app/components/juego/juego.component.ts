@@ -46,8 +46,6 @@ export class JuegoComponent {
 
   juegoIniciado: boolean = false;
 
-  juegoFinalizado: boolean = false;
-
   botonReiniciar: boolean = true;
 
   mostrarContadorIntentos: boolean = true;
@@ -115,13 +113,11 @@ export class JuegoComponent {
       this.imagenAhorcado = 'images/ahorcado/ahorcado-' + String(this.cantidadErrores) + '.jpg';
       if (this.cantidadIntentos === 0 ) {
           this.mostrarModalPerdedor();
-          this.juegoFinalizado = true;
       }
     }else{
       if(this.cantidadErrores<6 && this.letraCorrecta.join('') === this.palabraSecreta.join('')){
         this.palabraAdivinada=true;
         this.mostrarModalGanador();
-        this.juegoFinalizado = true;
 
           console.log("Felicidades ganaste")
       }
@@ -182,13 +178,4 @@ export class JuegoComponent {
     this.seleccionarPalabraAleatoria();
   }
 
-
- 
-/** 
-  verificarPalabra() {
-    if (this.palabraIngresada.join('') === this.palabraSecreta.join('')) {
-      this.palabraAdivinada = true;
-    }
-  } 
-*/
 }

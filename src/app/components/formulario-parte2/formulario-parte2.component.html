@@ -1,42 +1,52 @@
 <form action="">
 
-    <div class="mb-3">
-      <label for="iddni" class="form-label">Ingrese DNI</label>
-      <input type="text" class="form-control" id="iddni" [(ngModel)]="boleto.dni" name="dni" required>
-    </div>
-    
-    <div class="mb-3">
-      <label for="idprecioReal" class="form-label">Ingrese precio real</label>
-      <input type="number"  class="form-control" id="idprecioReal" [(ngModel)]="boleto.precioReal" name="precioReal" min="100"  max="1000" required>
-    </div>
-  
-    <div class="mb-3">
-      <label for="categoriaTurista" class="form-label">Seleccione Categoria Turista</label>
-    <select (click)="mostrarPrecioCobrado()" name="categoriaTurista" class="form-select form-select-lg mb-3" aria-label="Default select example" [(ngModel)]="boleto.categoriaTurista"  required>
+  <div class="mb-3">
+    <label for="iddni" class="form-label">Ingrese DNI</label>
+    <input type="text" class="form-control" id="iddni" [(ngModel)]="boleto.dni" name="dni" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="idprecioReal" class="form-label">Ingrese precio real</label>
+    <input type="number" class="form-control" id="idprecioReal" [(ngModel)]="boleto.precioReal" name="precioReal"
+      min="100" max="1000" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="categoriaTurista" class="form-label">Seleccione Categoria Turista</label>
+    <select (click)="mostrarPrecioCobrado()" name="categoriaTurista" class="form-select form-select-lg mb-3"
+      aria-label="Default select example" [(ngModel)]="boleto.categoriaTurista" required>
       <option value="" disabled selected>Seleccione categoria de Turista</option>
       <option value="Menor">Menor</option>
-      <option value="Adulto"  >Adulto</option>
-      <option value="Jubilado"  >Jubilado</option>
+      <option value="Adulto">Adulto</option>
+      <option value="Jubilado">Jubilado</option>
     </select>
-    </div>
-  
-   
-    <div class="mb-3" *ngIf="estado==true">
-      <label for="idprecioCobrado" class="form-label">Precio cobrado</label>
-        <input type="number" name="precioCobrado" class="form-control" id="idprecioCobrado"  value="{{calcularPrecioCategoriaTurista()}}" >
-    </div>
-      
-    <div class="mb-3">
-        <label for="idemail" class="form-label">Ingrese email</label>
-        <input type="text" class="form-control" id="idemail" [(ngModel)]="boleto.email" name="email" required>
-      </div>
-    
-        <button *ngIf="accion=='new'" type="button" class="btn btn-success" (click)="registrarBoleto()">Registrar</button>
-       
-        <button *ngIf="accion=='update'" type="button" class="btn btn-warning" (click)="modificarBoleto()">Modificar</button>
-  
-        <button type="button" class="btn btn-primary" (click)="volverMenuPricipal()">Volver</button>
-  
-  
-  
-  </form>
+  </div>
+
+
+  <div class="mb-3" *ngIf="estado==true">
+    <label for="idprecioCobrado" class="form-label">Precio cobrado</label>
+    <input type="number" name="precioCobrado" class="form-control" id="idprecioCobrado"
+      value="{{calcularPrecioCategoriaTurista()}}">
+  </div>
+
+  <div class="mb-3">
+    <label for="idemail" class="form-label">Ingrese email</label>
+    <input type="text" class="form-control" id="idemail" [(ngModel)]="boleto.email" name="email" required>
+  </div>
+
+  <button *ngIf="accion=='new'" type="button" class="btn btn-success" (click)="registrarBoleto()">
+    <i class="fa-solid fa-floppy-disk"></i>
+    Registrar</button>
+
+  <button *ngIf="accion=='update'" type="button" class="btn btn-warning" (click)="modificarBoleto()">
+    <i class="fa-solid fa-pen"></i>
+
+    Modificar</button>
+
+  <button type="button" class="btn btn-primary" (click)="volverMenuPricipal()">
+    <i class="fa-solid fa-left-long"></i>
+    Volver</button>
+
+
+
+</form>

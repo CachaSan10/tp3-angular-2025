@@ -2,7 +2,8 @@
     <h1>Productos</h1>
     <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
-    Comprar
+  <i class="fa-solid fa-cart-shopping"></i>
+    Carrito
   </button>
   
   <!-- Modal -->
@@ -54,7 +55,9 @@
                     <h5 class="card-title">{{producto.nombre}}</h5>
                     <p class="card-text">{{producto.descripcion}}</p>
                     <p class="card-text">Precio: {{producto.precio}}</p>
-                    <button class="btn btn-primary" (click)="agregarProducto(producto)">Agregar al carrito</button>
+                    <button class="btn btn-primary" (click)="agregarProducto(producto)">
+                      <i class="fa-solid fa-cart-plus"></i>
+                      Agregar al carrito</button>
                 </div>
             </div>
         </div>

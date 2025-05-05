@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './producto.component.css'
 })
 export class ProductoComponent {
-  path = 'images/';
+  path = 'images/producto/';
   id:number = 4;
   productos: Producto[] = [
    new Producto(1,  'Notebook Samsung Galaxy Book3', 'La Notebook Samsung Galaxy Book3 de 15.6" en color plateado ofrece un rendimiento potente gracias a su procesador Intel Core i7, 16GB de RAM y un rápido almacenamiento SSD de 512GB. Ideal para productividad y tareas exigentes en un diseño elegante y portátil.', 100, 1, this.path + 'netbook-samsung.webp', 'Notebook Samsung Galaxy Book3'),

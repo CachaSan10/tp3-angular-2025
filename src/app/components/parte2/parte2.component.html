@@ -1,5 +1,7 @@
 <div class="container">
-    <button type="button" class="btn btn-success" (click)="agregarBoleto()">Agregar Boleto</button>
+    <button type="button" class="btn btn-success" (click)="agregarBoleto()">
+        <i class="fa-solid fa-plus"></i>
+        Agregar Boleto</button>
 
     <table class="table caption-top">
         <caption>LISTA DE LAS VENTAS DE BOLETOS</caption>
@@ -27,8 +29,12 @@
 
                 <td>{{t.email}}</td>
                 <td>
-                    <button type="button" class="btn btn-warning" (click)="modificarTicket(t)">Modificar</button>
-                    <button type="button" class="btn btn-danger" (click)="eliminarTicket(t)">Eliminar</button>
+                    <button type="button" class="btn btn-warning eliminar-modificar" (click)="modificarTicket(t)">
+                        <i class="fa-solid fa-pen"></i>
+                        Modificar</button>
+                    <button type="button" class="btn btn-danger eliminar-modificar" (click)="eliminarTicket(t)">
+                        <i class="fa-solid fa-trash"></i>
+                        Eliminar</button>
 
                 </td>
 
@@ -38,7 +44,9 @@
     </table>
 
 
-    <button type="button" class="btn btn-info" (click)="resumenBoleto()">RESUMEN</button>
+    <button type="button" class="btn btn-info" (click)="resumenBoleto()">
+        <i class="fa-solid fa-sack-dollar"></i>
+                RESUMEN</button>
     <table class="table caption-top" *ngIf="resumen==true">
         <caption>RESUMEN DE LAS VENTAS DE TICKET</caption>
         <thead class="table-dark">

@@ -8,7 +8,7 @@ import { Noticia } from '../../models/noticia';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  path = 'images/';
+  path = 'images/noticia/';
   noticias: Noticia[] = [
     new Noticia(1, 'Financial Times advierte por "riesgos electorales" para Javier Milei tras el acuerdo con el FMI y la flexibilización del cepo', 'El diario británico The Financial Times publicó este domingo un artículo en el que advierte sobre los "riesgos electorales" para la gestión de Javier Milei que podrían generar las recientes medidas del acuerdo con el FMI y la eliminación del cepo cambiario para personas humanas, en la dinámica del dólar y la inflación.', this.path + 'noticia1.webp', 'Imagen de Milei'),
     new Noticia(2, 'La muerte del papa Francisco', 'La Santa Sede confirmó que el Papa falleció por un derrame cerebral durante la madrugada de este lunes. Además, se informó podrían trasladar el cuerpo del pontífice el miércoles a San Pedro para el último saludo de los fieles.', this.path + 'noticia2.webp', 'foto de papa Francisco'),
