@@ -29,7 +29,9 @@
 
                       <p class="card-text">Precio Unitario: ${{producto.precio}}</p>  
                       <p class="card-text">Cantidad: {{producto.cantidad}}</p>
-                      <p class="card-text">Total: ${{mostrarTotalProducto(producto)}}</p>
+                      <p class="card-text">Total sin descuento: ${{mostrarTotalProducto(producto)}}</p>
+                      <p class="card-text">Total con descuento: ${{calcularPrecioTotalConDescuento(producto)}}</p>
+
                       <button class="btn btn-danger sumar-restar" (click)="restarCantidadProducto(producto)"><i class="fa-solid fa-minus"></i></button>
                       <button class="btn btn-success sumar-restar" (click)="sumarCantidadProducto(producto)"><i class="fa-solid fa-plus"></i></button>  
                     </div>
@@ -52,13 +54,14 @@
   </div>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-        <div class=" col-xl-3 col-lg-3 col-md-4 col-sm-6" *ngFor="let producto of productos">
+        <div class=" col-xl-3 col-lg-3 col-md-4 col-sm-6" *ngFor="let producto of productosDisponible">
             <div class="card">
                 <img [src]="producto.imagen" alt="{{producto.imagen_descripcion}}" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">{{producto.nombre}}</h5>
                     <p class="card-text">{{producto.descripcion}}</p>
                     <p class="card-text">Precio: {{producto.precio}}</p>
+                    <p class="card-text"> Precio con descuento: {{calcularTotalCompra(producto)}}</p>
                     <button class="btn btn-primary" (click)="agregarProducto(producto)">
                       <i class="fa-solid fa-cart-plus"></i>
                       Agregar al carrito</button>

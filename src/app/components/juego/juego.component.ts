@@ -118,8 +118,6 @@ export class JuegoComponent {
       if(this.cantidadErrores<6 && this.letraCorrecta.join('') === this.palabraSecreta.join('')){
         this.palabraAdivinada=true;
         this.mostrarModalGanador();
-
-          console.log("Felicidades ganaste")
       }
     }
 
